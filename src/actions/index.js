@@ -68,17 +68,43 @@ export function fetchTrail(id) {
 }
 
 export function fetchCoordinates(address) {
-  // const url = `${GEO_ROOT_URL}${address}${GEO_KEY}`;
-  const url = `${GEO_ROOT_URL}yosemite${GEO_KEY}`;
+  const url = `${GEO_ROOT_URL}${address}${GEO_KEY}`;
+  // const url = `${GEO_ROOT_URL}yosemite${GEO_KEY}`;
   
-  return axios.get(url);
-  // const request = return axios.get(url);
-  // .then(function (response) {
-  //   this.setState({address: response.data.results});
-  // });
+  // OPTION 2
+  const request2 = axios.get(url)
+    .then(coor => {
+      const latCoor = (coor.data.results[0].geometry.location.lat);
+      const lngCoor = (coor.data.results[0].geometry.location.lng);
+      
+      const trail_url = `${API_ROOT_URL}lat=${latCoor}&lon=${lngCoor}&maxDistance=10${API_KEY}`;
+      // console.log(trail_url);
+      return axios.get(trail_url);
+    });
+    // .then(trails => {
+    //   return ((trails.data.trails));
+    // })
 
-  // return {
-  //   type: FETCH_COORDINATES,
-  //   payload: request
+  console.log(request2);
+  
+  // const requestTrail = a
+  
+  const request = axios.get(url);
+  // // OPTION 2
+  // // return axios.get(url);
+  // const request = axios.get(url);
+  // // console.log(request);
+  // if (request) {
+  //   // const { data } = ((request));
+  //   console.log((request.data));
   // }
+    
+  // // .then(function (response) {
+  // //   this.setState({address: response.data.results});
+  // // });
+
+  return {
+    type: FETCH_COORDINATES,
+    payload: request2
+  }
 }

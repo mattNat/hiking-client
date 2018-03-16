@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // clearly identical to anchor tag
 import { Link } from 'react-router-dom';
-import { fetchPosts, fetchTrails, fetchCoordinates } from '../actions';
+import { fetchTrails, fetchCoordinates } from '../actions';
 import _ from 'lodash';
 import SearchBar from '../containers/search_bar';
 
@@ -16,25 +16,50 @@ class PostsIndex extends Component {
     // action creator, will console.log twice
     // this.props.fetchCoordinates();
     // this.props.fetchPosts();
-    if (!this.props.fetchTrails) {
+
+    if (!this.props.fetchCoordinates) {
       // feed lines below
-      this.props.fetchTrails();
+      this.props.fetchCoordinates();
     }
+
+    // if (!this.props.fetchTrails) {
+    //   // feed lines below
+    //   this.props.fetchTrails();
+    // }
+    // this.props.fetchTrails(32.715738, -117.1610838);
+
+    // console.log(this.props.coordinates);
+    // const coor = (Object.values(this.props.coordinates)[0]) || {};
+    // console.log(coor);
+    
+    
   }
 
   renderPosts() {
     // console.log(this.props.coordinates);
     
-    // const coor = (Object.values(this.props.coordinates)[0]) || {};
-    // // console.log(coor);
-    // const coor2 = ((coor.results));    
-    // // console.log(coor2);
-    // let coorProps = {};
-    // for (var key in coor2) {
-    //   coorProps = (Object.values(coor2[0])[2].location);
-    // }
-    // console.log(coorProps.lat, coorProps.lng);
+    // axios.get(url)
+
+    const coor = (Object.values(this.props.coordinates)[0]) || {};
+    console.log(coor.trails);
+    const coor2 = ((coor.results));    
+    // console.log(coor2);
+    let coorProps = {};
+    for (var key in coor2) {
+      coorProps = (Object.values(coor2[0])[2].location);
+    }
+    console.log(coorProps.lat, coorProps.lng);
     
+    const latCoor = coorProps.lat;
+    const lonCoor = coorProps.lng;
+
+    // fetch trails for lat long coordinates
+    // this.props.fetchTrails(latCoor, lonCoor);
+    // this.props.fetchTrails('32.715738', '-117.1610838');
+    
+
+
+
     // console.log(coorProps);
     
     // for (var key in coor2) {
@@ -57,7 +82,7 @@ class PostsIndex extends Component {
     console.log('From post_index.js:', myTrails.trails);
     // console.log(this.props.posts);
     
-    return _.map(myTrails.trails, trail => {
+    return _.map(coor.trails, trail => {
       return (
         <li className='list-group-item' key={trail.id.toString()} >
           <Link to={`/posts/${trail.id}`} >
@@ -98,8 +123,8 @@ class PostsIndex extends Component {
 function mapsStateToProps(state) {
   return { 
     posts: state.posts,
-    trails: state.trails
-    // coordinates: state.coordinates
+    trails: state.trails,
+    coordinates: state.coordinates
   };
 }
 
@@ -107,4 +132,4 @@ function mapsStateToProps(state) {
 // null - we are not passing mapsStateToProps
 // fetchPosts is identical to mapDispatchToProps
 // still have access to this.props.fetch.posts
-export default connect(mapsStateToProps, { fetchPosts, fetchTrails, fetchCoordinates })(PostsIndex);
+export default connect(mapsStateToProps, { fetchTrails, fetchCoordinates })(PostsIndex);
