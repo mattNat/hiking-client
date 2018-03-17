@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPosts } from '../actions';
 import _ from 'lodash';
+import Sidebar from './sidebar';
 
 // when are we going to call reaction creator
 // react lifecycle method
@@ -53,10 +54,8 @@ class PostsIndex extends Component {
     // console.log(this.props.posts);
     return (
       <div>
+        <Sidebar />
         <div className='text-xs-right'>
-          <Link className='btn btn-primary' to='/'>
-            Back to index
-          </Link>
         </div>
         <h3>Saved Trails</h3>
         <ul className='list-group'>

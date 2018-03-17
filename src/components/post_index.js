@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { fetchTrails, fetchCoordinates } from '../actions';
 import _ from 'lodash';
 import SearchBar from '../containers/search_bar';
-
+import Sidebar from './sidebar';
 
 // when are we going to call reaction creator
 // react lifecycle method
@@ -104,6 +104,7 @@ class PostsIndex extends Component {
     // console.log(this.props.posts);
     return (
       <div>
+        <Sidebar />
         <SearchBar />
         <div className='text-xs-right'>
           <Link className='btn btn-primary' to='/posts/new'>

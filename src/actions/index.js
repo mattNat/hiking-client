@@ -72,7 +72,7 @@ export function fetchCoordinates(address) {
   // const url = `${GEO_ROOT_URL}yosemite${GEO_KEY}`;
   
   // OPTION 2
-  const request2 = axios.get(url)
+  const request = axios.get(url)
     .then(coor => {
       const latCoor = (coor.data.results[0].geometry.location.lat);
       const lngCoor = (coor.data.results[0].geometry.location.lng);
@@ -81,15 +81,24 @@ export function fetchCoordinates(address) {
       // console.log(trail_url);
       return axios.get(trail_url);
     });
-    // .then(trails => {
-    //   return ((trails.data.trails));
-    // })
 
-  console.log(request2);
+  console.log(request);
+  
+  const getCoor = axios.get(url)
+    .then(coor => {
+      const latCoor = (coor.data.results[0].geometry.location.lat);
+      const lngCoor = (coor.data.results[0].geometry.location.lng);
+
+      return coor.data.results[0].geometry.location;
+    })
+
+
+  console.log(getCoor);
+  
   
   // const requestTrail = a
   
-  const request = axios.get(url);
+  // const request = axios.get(url);
   // // OPTION 2
   // // return axios.get(url);
   // const request = axios.get(url);
@@ -105,6 +114,6 @@ export function fetchCoordinates(address) {
 
   return {
     type: FETCH_COORDINATES,
-    payload: request2
+    payload: request
   }
 }
