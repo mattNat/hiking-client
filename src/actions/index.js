@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // local database
-const ROOT_URL = `http://localhost:3005`;
+const ROOT_URL = process.env.REACT_APP_API_BASE_URL || `http://localhost:3005`;
 
 // hiking trail api
 const API_KEY = '&key=200228532-bc7667c06009a2e233ef5527dbb3a053';
