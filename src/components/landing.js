@@ -1,26 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import './sidebar.css';
 
-export function Sidebar() {
+export function Landing() {
   // const folderId = props.match.params.folderId;
   // console.log(folderId);
     const folders = (
       <div>
-        <li className="folder-menu-list-item">
+        <li className="landing-menu-list-item">
             <Link to={`/homepage`}>Home</Link>
-        </li>
-        <li className="folder-menu-list-item">
-          <Link to={`/posts/new`}>Saved Trails</Link>
         </li>
       </div>
     );
 
     return (
         <div className="sidebar sidebar-left">
-            <nav className="folder-menu">
-                <ul className="folder-menu-list">
+            <nav className="landing-menu">
+                <ul className="landing-menu-list">
                     {folders}
                 </ul>
             </nav>
@@ -32,4 +28,4 @@ const mapStateToProps = state => ({
     folderList: Object.keys(state).map(folderId => state[folderId])
 });
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps)(Landing);

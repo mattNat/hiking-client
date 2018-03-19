@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import promise from 'redux-promise';
 
 import './index.css';
@@ -13,6 +13,7 @@ import reducers from './reducers';
 import PostsIndex from './components/post_index';
 import PostsNew from './components/posts_new';
 import PostsShow from './components/posts_show';
+import Landing from './components/landing';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -21,9 +22,17 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
+          {/* BEFORE */}
+          {/* <Route path='/landing' component={Landing} />
           <Route path='/posts/new' component={PostsNew} />
           <Route path='/posts/:id' component={PostsShow} />
-          <Route path='/' component={PostsIndex} />
+          <Route path='/' component={PostsIndex} /> */}
+
+          {/* AFTER */}
+          <Route path='/homepage' component={PostsIndex} />
+          <Route path='/posts/new' component={PostsNew} />
+          <Route path='/posts/:id' component={PostsShow} />
+          <Route path='/' component={Landing} />
         </Switch>
       </div>
     </BrowserRouter>
