@@ -6,6 +6,11 @@ import { fetchTrails, fetchCoordinates } from '../actions';
 import _ from 'lodash';
 import SearchBar from '../containers/search_bar';
 import Sidebar from './sidebar';
+import ReactStars from 'react-stars';
+
+import './post_index.css';
+// import './float-grid.css';
+
 
 // when are we going to call reaction creator
 // react lifecycle method
@@ -41,7 +46,7 @@ class PostsIndex extends Component {
     // axios.get(url)
 
     const coor = (Object.values(this.props.coordinates)[0]) || {};
-    console.log(coor.trails);
+    console.log(coor);
     const coor2 = ((coor.results));    
     // console.log(coor2);
     let coorProps = {};
@@ -82,20 +87,131 @@ class PostsIndex extends Component {
     console.log('From post_index.js:', myTrails.trails);
     // console.log(this.props.posts);
     
+    // if i % 2 put in div 
+    console.log(coor.trails);
+    
+    // console.log(coor.trails.map((trail, index) => console.log(trail, index)));
+    
+    const trailArr = _.values(coor.trails);
+    // console.log(typeof test);
+    // const testArr = test.map((trail, index) => console.log(trail, index));
+
+    // return coor.trails.map() after converted ARRAY like before
+    // use index 0-addnewrow 1 2-addnewrow
+
+    // const test = trailArr.forEach((trail, index) => {
+    //   console.log(trail, index);
+      
+    // })
+
+    console.log(trailArr.slice(0,3).forEach((trail, index) => console.log(trail.name, index)
+    ));
+    
+      // trailArr.slice(0,2)
+      
+    //   // NEW WAY USING ARRAY MAPPING
+    //   return trailArr.map((trail, index) => {
+    //     console.log(trailArr.length);
+        
+    //     const repeat =  trailArr.slice(0,3).forEach((trail, index) => {
+    //       <div className='list-item' className='col-4' >
+    //         <img className='portrait' src= {trail.imgSmallMed}  alt={trail.name} width='300px' /> <br/>
+    //         <Link to={`/posts/${trail.id}`} >
+    //           Save this hike!
+    //         </Link> <br/>
+    //         Name: {trail.name} <br/>
+    //         Length (round-trip): {trail.length} mi<br/>
+    //         Condition: {trail.conditionStatus} <br/>
+    //         Stars: {trail.stars} out of {trail.starVotes} votes <br/>
+    //       </div>
+    //     })
+    //   // const repeat =  trailArr.slice(0,3).forEach((trail, index) => {
+    //   //   <div className='list-item' className='col-4' >
+    //   //     <img className='portrait' src= {trail.imgSmallMed}  alt={trail.name} width='300px' /> <br/>
+    //   //     <Link to={`/posts/${trail.id}`} >
+    //   //       Save this hike!
+    //   //     </Link> <br/>
+    //   //     Name: {trail.name} <br/>
+    //   //     Length (round-trip): {trail.length} mi<br/>
+    //   //     Condition: {trail.conditionStatus} <br/>
+    //   //     Stars: {trail.stars} out of {trail.starVotes} votes <br/>
+    //   //   </div>
+    //   // })
+    
+
+    // console.log(repeat);
+    
+      
+    //   if (index === 2) {
+    //     return (
+    //       <div key={trail.id.toString()} className='row' >
+    //         {`${repeat}`}
+    //       </div>
+    //     )
+    //   }
+    // })
+      
+      
+    
+
+    // OLD WAY USING LODASH
     return _.map(coor.trails, trail => {
+      // console.log(index);
+
+      if (trail.imgSmallMed === '') {
+        // console.log('empty image found!');
+        trail.imgSmallMed = 'https://i.pinimg.com/originals/a4/b0/c4/a4b0c4fc44ec75c55d7d40a1d3994435.jpg';
+      }
+      
+
       return (
-        <li className='list-group-item' key={trail.id.toString()} >
-          <Link to={`/posts/${trail.id}`} >
-            Save this hike!
-          </Link> <br/>
-          Name: {trail.name} <br/>
-          Length (round-trip): {trail.length} mi<br/>
-          Condition: {trail.conditionStatus} <br/>
-          Stars: {trail.stars} out of {trail.starVotes} votes <br/>
-          <img src= {trail.imgSqSmall}  alt={trail.name} />
-        </li>
+        
+        // OLD
+        // <li key={trail.id.toString()} >
+        //   <div className='list-item' >
+        //     <img className='portrait' src= {trail.imgSmallMed}  alt={trail.name} width='300px' /> <br/>
+        //     <Link to={`/posts/${trail.id}`} >
+        //       Save this hike!
+        //     </Link> <br/>
+        //     Name: {trail.name} <br/>
+        //     Length (round-trip): {trail.length} mi<br/>
+        //     Condition: {trail.conditionStatus} <br/>
+        //     Stars: {trail.stars} out of {trail.starVotes} votes <br/>
+        //   </div>
+        // </li>
+
+        // NEW
+        <div key={trail.id.toString()} className='row' >
+          <div className='list-item'>
+            <img className='portrait' src= {trail.imgSmallMed}  alt={trail.name} width='300px' /> <br/>
+
+            
+            <Link to={`/posts/${trail.id}`} style={{ textDecoration: 'none' }} className='save-hike' > 
+              Save this hike!
+            </Link> <br/>
+              <h4 className='trail-name' > {trail.name} </h4><br/>
+            <p>
+              <b>Length (round-trip):</b> {trail.length} mi<br/>
+              <b>Ascent:</b> {trail.ascent} ft<br/>
+              <b>Condition:</b> {trail.conditionStatus} <br/>
+              <span className='top'></span>
+              <span className='top' ><ReactStars 
+                // count={5}
+                value={trail.stars}
+                size={24}
+                color2={'#ffd700'}
+                edit={false}
+              /></span>
+              <br /> 
+              {trail.starVotes} votes <br/>
+            </p>
+            
+
+          </div>
+        </div>
       );
     });
+
   }
   
 
@@ -105,16 +221,16 @@ class PostsIndex extends Component {
     return (
       <div>
         <Sidebar />
-        <SearchBar />
-        <div className='text-xs-right'>
-          <Link className='btn btn-primary' to='/posts/new'>
-            Saved Posts
-          </Link>
+        <div className='search-results'>
+              <h3>Find your next adventure...</h3>
+              <hr />
+              <SearchBar />
+            <div className='wrapper' >
+              <ul className='itemHolder' >
+                {this.renderPosts()}
+              </ul>
+            </div>
         </div>
-        <h3>Find your next adventure...</h3>
-        <ul className='list-group'>
-          {this.renderPosts()}
-        </ul>
       </div>
     );
   }
