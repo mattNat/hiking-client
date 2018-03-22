@@ -12,10 +12,13 @@ const GEO_ROOT_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=
 const GEO_KEY = '&key=AIzaSyATySdNMMYE-uv4PmUb3RqYgDcHCARsvMQ';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST = 'FETCH_POST';
 export const FETCH_TRAILS = 'FETCH_TRAILS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_TRAIL = 'FETCH_TRAIL';
 export const FETCH_COORDINATES = 'FETCH_COORDINATES';
+export const DELETE_POST = 'DELETE_POST';
+
 
 
 export function fetchPosts() {
@@ -82,7 +85,7 @@ export function fetchCoordinates(address) {
       return axios.get(trail_url);
     });
 
-  console.log(request);
+  // console.log(request);
   
   const getCoor = axios.get(url)
     .then(coor => {
@@ -114,6 +117,25 @@ export function fetchCoordinates(address) {
 
   return {
     type: FETCH_COORDINATES,
+    payload: request
+  }
+}
+
+export function deletePost(id, callback) {
+  const request = axios.delete(`${ROOT_URL}/notes/${id}`)
+    .then( () => callback());
+
+  return {
+    type: DELETE_POST,
+    payload: id
+  }
+}
+
+export function fetchPost(id) {
+  const url = `${ROOT_URL}/notes/${id}`;
+  const request = axios.get(url);
+  return {
+    type: FETCH_POST,
     payload: request
   }
 }

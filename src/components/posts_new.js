@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // clearly identical to anchor tag
 import { Link } from 'react-router-dom';
-import { fetchPosts } from '../actions';
+import { fetchPosts, fetchPost, deletePost } from '../actions';
 import _ from 'lodash';
 import Sidebar from './sidebar';
 import ReactStars from 'react-stars';
+// import historyPack from '../index';
+import { createHashHistory } from 'history';
 
 import './posts_new.css';
 import './hover-animate.css';
@@ -17,8 +19,28 @@ class PostsIndex extends Component {
   // ideal for data loading
   componentDidMount() {
     // action creator, will console.log twice
-
     this.props.fetchPosts();
+
+    const { id } = this.props.match.params;
+    this.props.fetchPost(id);
+    console.log('componentDidMount id:', id);
+    
+  }
+
+  onDeleteClick(id) {
+    // const {id} = this.props.posts;
+
+    // console.log('on delete PARAMS:', this.props.match.params);
+    
+    // console.log('on delete ID:', id);
+
+
+    this.props.deletePost(id, () => {
+      // this.props.history.push('/posts/new');
+      // this.context.history.push('/posts/new');
+      // historyPack.push('/posts/new')
+      window.location.reload();
+    });
   }
 
   renderPosts() {
@@ -90,6 +112,15 @@ class PostsIndex extends Component {
             User: {post.user} <br/>
             Comment: {post.comment} <br/>
             Hike Date: {post.date} <br/><br/>
+            <button
+              className='btn btn-danger'
+              // onClick={this.onDeleteClick(post.id)}
+              // onClick={() => this.props.deletePost(post.id, () => {
+              //   this.props.history.push('/posts/new');
+              onClick={() => this.onDeleteClick(post.id)}
+            >
+              Delete Post
+            </button>
           </h4>
           <div className="container">
             <img src={post.imgSmallMed} alt={post.name} />
@@ -142,9 +173,11 @@ class PostsIndex extends Component {
 }
 
 // lists of post get inside component
-function mapsStateToProps(state) {
+// function mapsStateToProps(state) {
+function mapStateToProps({ posts }, ownProps) {
   return { 
-    posts: state.posts,
+    posts: posts,
+    post: posts[ownProps.match.params.id]
   };
 }
 
@@ -152,4 +185,6 @@ function mapsStateToProps(state) {
 // null - we are not passing mapsStateToProps
 // fetchPosts is identical to mapDispatchToProps
 // still have access to this.props.fetch.posts
-export default connect(mapsStateToProps, { fetchPosts })(PostsIndex);
+export default connect(mapStateToProps, { fetchPosts, fetchPost, deletePost })(PostsIndex);
+
+export const historyPack = createHashHistory();
