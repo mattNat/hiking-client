@@ -159,10 +159,34 @@ class PostsIndex extends Component {
       // console.log(index);
 
       if (trail.imgSmallMed === '') {
-        // console.log('empty image found!');
         trail.imgSmallMed = 'https://i.pinimg.com/originals/a4/b0/c4/a4b0c4fc44ec75c55d7d40a1d3994435.jpg';
       }
       
+      let name = null;
+      let imgLink = null;
+
+      if (trail.difficulty === 'green') {
+        name = 'Very Easy';
+        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';
+      } else if (trail.difficulty === 'greenBlue') {
+        name = 'Easy';
+        imgLink = 'https://cdn.apstatic.com/img/diff/greenBlue.svg';
+      } else if (trail.difficulty === 'blue') {
+        name = 'Intermediate';
+        imgLink = 'https://cdn.apstatic.com/img/diff/blue.svg';
+      } else if (trail.difficulty === 'blueBlack') {
+        name = 'Challenging';
+        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
+      } else if (trail.difficulty === 'black') {
+        name = 'Very Challenging';
+        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
+      } else if (trail.difficulty === 'dblack') {
+        name = 'Extremely Challenging';
+        imgLink = 'https://cdn.apstatic.com/img/diff/dblack.svg';
+      } else {
+        name = 'Not Provided'
+        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';        
+      }
 
       return (
         
@@ -194,19 +218,21 @@ class PostsIndex extends Component {
               <b>Length (round-trip):</b> {trail.length} mi<br/>
               <b>Ascent:</b> {trail.ascent} ft<br/>
               <b>Condition:</b> {trail.conditionStatus} <br/>
-              <span className='top'></span>
-              <span className='top' ><ReactStars 
-                // count={5}
-                value={trail.stars}
-                size={24}
-                color2={'#ffd700'}
-                edit={false}
-              /></span>
-              <br /> 
-              {trail.starVotes} votes <br/>
+              <b>Difficulty:</b> {`${name}`}
+              {/* (<img className='diff-img' src={`${imgLink}`}  alt={`${name}`} width='20px' />) <br/> */}
             </p>
-            
-
+            {/* <span className='diff-block' >
+            </span> */}
+              <span className='top' >
+                <ReactStars 
+                  // count={5}
+                  value={trail.stars}
+                  size={24}
+                  color2={'#ffd700'}
+                  edit={false}
+                />
+                {trail.starVotes} votes <br/>
+              </span>
           </div>
         </div>
       );
@@ -222,7 +248,9 @@ class PostsIndex extends Component {
       <div>
         <Sidebar />
         <div className='search-results'>
-              <h3>Find your next adventure...</h3>
+              <h3>
+                Find your next adventure...
+              </h3>
               <hr />
               <SearchBar />
             <div className='wrapper' >

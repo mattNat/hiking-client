@@ -1,3 +1,6 @@
+/* @import "compass/css3"; */
+/* @import "compass/css3/animation" */
+
 body {
   border: 20px solid  rgb(0, 0, 75);
   padding: 20px;
@@ -25,6 +28,8 @@ body {
   /* overflow:hidden;   */
   margin-top: 30px;
   margin-bottom: 20px;
+  border: 5px solid black;
+  border-radius: 5px;
 }
 
 .portrait img {
@@ -44,27 +49,41 @@ body {
   display: inline-block;
 }
 
-.search-results h3 {
+/* .diff-img {
+  display: inline-block;
+  
+} */
+
+/* .search-results h3 {
   color: rgb(0, 0, 75);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   text-align: center;
   background-color: #bdc3c7;
+} */
+.search-results h3 {
+  /* margin-top: 5%; */
+  font-size: 3rem;
+  text-align: center;
+  /* display: inline-block; */
+  
 }
 
-.search-results h3:first-letter {
+/* .search-results h3:first-letter {
   color: black;
   font-size: 50px;
-}
+} */
 
 hr {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  margin-bottom: 65px;
 }
 
 .list-item {
   background-color: #bdc3c7;
+  margin-bottom: 20px;
 }
 
 .list-item:hover {
@@ -87,6 +106,10 @@ hr {
   padding: 10px;
   font-weight: bold;
   border: 3px solid black;
+}
+
+.wrapper {
+  margin-left: -30px;
 }
 
 /* hr {

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCoordinates } from '../actions/index';
 
+import './search_bar.css'
+
 /*
 set controlled state
 */
@@ -53,29 +55,35 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} className='input-group'>
-        {/* <input 
-          placeholder='Latitude'
-          className='form-control'
-          value={this.state.lat}
-          onChange={this.onInputChangeLat}
-        />
-        <input 
-          placeholder='Longitude'
-          className='form-control'
-          value={this.state.lon}
-          onChange={this.onInputChangeLon}
-        /> */}
-        <input 
-          placeholder='Address or location...'
-          className='form-control'
-          value={this.state.address}
-          onChange={this.onInputChange}
-        />
-        <span className='input-group-btn'>
-          <button type='submit' className='btn btn-secondary'>Submit</button>
-        </span>
-      </form>
+      <div className='wrap' >
+        <div className='search' >
+          <form onSubmit={this.onFormSubmit} className='input-group'>
+            {/* <input 
+              placeholder='Latitude'
+              className='form-control'
+              value={this.state.lat}
+              onChange={this.onInputChangeLat}
+            />
+            <input 
+              placeholder='Longitude'
+              className='form-control'
+              value={this.state.lon}
+              onChange={this.onInputChangeLon}
+            /> */}
+            <input 
+              placeholder='Address or location...'
+              className='searchTerm'
+              value={this.state.address}
+              onChange={this.onInputChange}
+            />
+            <span className='input-group-btn'>
+              <button type='submit' className='searchButton'>
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </form>
+        </div>
+      </div>
     )
   }
 }
