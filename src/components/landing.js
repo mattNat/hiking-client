@@ -2,13 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import './landing.css';
+
 export function Landing() {
   // const folderId = props.match.params.folderId;
   // console.log(folderId);
     const folders = (
       <div>
         <li className="landing-menu-list-item">
-            <Link to={`/homepage`}>Home</Link>
+            <Link to={`/homepage`}>Begin your search</Link>
         </li>
       </div>
     );
@@ -20,6 +22,55 @@ export function Landing() {
                     {folders}
                 </ul>
             </nav>
+            <div class="accordian">
+	<ul>
+		<li>
+			<div class="image_title">
+				<a href="#">Find</a>
+			</div>
+			<a href="#">
+				{/* <img src="http://thecodeplayer.com/uploads/media/3yiC6Yq.jpg"/>                 */}
+                <img src="https://adventurejunkies-theadventurejunk.netdna-ssl.com/wp-content/uploads/hiking-1.jpg" 
+                width='650' height='325' />
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Your</a>
+			</div>
+			<a href="#">
+                <img src="https://cdn.kimkim.com/files/a/content_articles/featured_photos/7a1e35ce237d78064a73e43f31c2d36897903ef3/big-7cb3c41e0671f4e79a3f9bae97d3490d.jpg" 
+                width='650' height='325' />
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Next</a>
+			</div>
+			<a href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Hiking_in_the_Talkeetna_Mountains_of_Alaska.JPG" 
+                width='650' height='325' />
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Adventure...</a>
+			</div>
+			<a href="#">
+                <img src="http://yegfitness.ca/wp-content/uploads/2017/07/hiking.jpg" 
+                width='650' height='325' />
+			</a>
+		</li>
+		{/* <li>
+			<div class="image_title">
+				<a href="#">Cars 2</a>
+			</div>
+			<a href="#">
+				<img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg"/>
+			</a>
+		</li> */}
+	</ul>
+</div>
         </div>
     );
 }

@@ -211,10 +211,12 @@ class PostsIndex extends Component {
 
             
             <Link to={`/posts/${trail.id}`} style={{ textDecoration: 'none' }} className='save-hike' > 
-              Save this hike!
+              Save Trail
             </Link> <br/>
               <h4 className='trail-name' > {trail.name} </h4><br/>
             <p>
+              <b>Location:</b> {trail.location} <br/>
+              <b>Lat/Long:</b> {trail.latitude}, {trail.longitude} <br/>              
               <b>Length (round-trip):</b> {trail.length} mi<br/>
               <b>Ascent:</b> {trail.ascent} ft<br/>
               <b>Condition:</b> {trail.conditionStatus} <br/>

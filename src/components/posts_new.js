@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { fetchPosts } from '../actions';
 import _ from 'lodash';
 import Sidebar from './sidebar';
+import ReactStars from 'react-stars';
+
+import './posts_new.css';
+import './hover-animate.css';
 
 // when are we going to call reaction creator
 // react lifecycle method
@@ -32,18 +36,87 @@ class PostsIndex extends Component {
     // console.log(this.props.posts);
     
     return _.map(myPosts, post => {
+      if (post.imgSmallMed === '') {
+        post.imgSmallMed = 'https://i.pinimg.com/originals/a4/b0/c4/a4b0c4fc44ec75c55d7d40a1d3994435.jpg';
+      }
+
+      let name = null;
+      let imgLink = null;      
+
+      if (post.difficulty === 'green') {
+        name = 'Very Easy';
+        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';
+      } else if (post.difficulty === 'greenBlue') {
+        name = 'Easy';
+        imgLink = 'https://cdn.apstatic.com/img/diff/greenBlue.svg';
+      } else if (post.difficulty === 'blue') {
+        name = 'Intermediate';
+        imgLink = 'https://cdn.apstatic.com/img/diff/blue.svg';
+      } else if (post.difficulty === 'blueBlack') {
+        name = 'Challenging';
+        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
+      } else if (post.difficulty === 'black') {
+        name = 'Very Challenging';
+        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
+      } else if (post.difficulty === 'dblack') {
+        name = 'Extremely Challenging';
+        imgLink = 'https://cdn.apstatic.com/img/diff/dblack.svg';
+      } else {
+        name = 'Not Provided'
+        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';        
+      }
+
       return (
-        <li className='list-group-item' key={post.id.toString()} >
-          User: {post.user} <br/>
-          Comment: {post.comment} <br/>
-          Hike Date: {post.date} <br/><br/>
-          Name: {post.name} <br/>
-          Length (round-trip): {post.length} mi<br/>
-          Condition: {post.conditionStatus} <br/>
-          Stars: {post.stars} out of {post.starVotes} votes <br/>
-          <a href={post.url}>Trail coordinates</a> <br/>
-          <img src= {post.imgSqSmall}  alt={post.name} />
-        </li>
+        // // OLD
+        // <li className='list-group-item' key={post.id.toString()} >
+        //   <img className='post-img' src= {post.imgSmallMed}  alt={post.name} />
+        //   User: {post.user} <br/>
+        //   Comment: {post.comment} <br/>
+        //   Hike Date: {post.date} <br/><br/>
+        //   Name: {post.name} <br/>
+        //   Length (round-trip): {post.length} mi<br/>
+        //   Condition: {post.conditionStatus} <br/>
+        //   Stars: {post.stars} out of {post.starVotes} votes <br/>
+        //   <a href={post.url}>Trail coordinates</a> <br/>
+        // </li>
+
+        // NEW
+        <div className='post-item' key={post.id.toString()}>
+        {/* add text align center to h below */}
+        {/* <h1 className="hover"> hover the image
+        </h1> */}
+          <h2>{post.name}</h2>
+          <h4>
+            User: {post.user} <br/>
+            Comment: {post.comment} <br/>
+            Hike Date: {post.date} <br/><br/>
+          </h4>
+          <div className="container">
+            <img src={post.imgSmallMed} alt={post.name} />
+            <div className="text_box">
+              {/* <h1> image hover effect</h1> */}
+              <p>
+                <b>Location:</b> {post.location} <br/>
+              <b>Lat/Long:</b> {post.latitude}, {post.longitude} <br/>       
+                <b>Length (round-trip):</b> {post.length} mi<br/>
+                <b>Ascent:</b> {post.ascent} ft<br/>
+                <b>Condition:</b> {post.conditionStatus} <br/>
+                <b>Difficulty:</b> {`${name}`}
+                {/* (<img className='diff-img' src={`${imgLink}`}  alt={`${name}`} width='20px' />) <br/> */}
+              </p>
+              <span className='top' >
+                <ReactStars 
+                  // count={5}
+                  value={post.stars}
+                  size={24}
+                  color2={'#ffd700'}
+                  edit={false}
+                />
+                {post.starVotes} votes <br/>
+              </span>
+            </div>
+          </div>
+        </div>
       );
     });
   }
@@ -55,12 +128,14 @@ class PostsIndex extends Component {
     return (
       <div>
         <Sidebar />
-        <div className='text-xs-right'>
+        <div className='content'>
+          <h1>Saved Trails</h1>
+          <div className='sub-content'>
+            {/* <ul className='list-group container'> */}
+              {this.renderPosts()}
+            {/* </ul> */}
+          </div>
         </div>
-        <h3>Saved Trails</h3>
-        <ul className='list-group'>
-          {this.renderPosts()}
-        </ul>
       </div>
     );
   }

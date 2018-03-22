@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { fetchTrail, createPost } from '../actions';
 import _ from 'lodash';
 
+import './posts_show.css'
+
+
 // import PostsSave from './post_save';
 
 class PostsShow extends Component {
@@ -84,7 +87,7 @@ class PostsShow extends Component {
 
     // POST TO SERVER && GO BACK TO SEARCH PAGE
     this.props.createPost(submitData, () => {
-      this.props.history.push('/');
+      this.props.history.push('/homepage');
     });
   };
 
@@ -139,28 +142,37 @@ class PostsShow extends Component {
 
     return _.map(myTrail.trails, trail => {
       // console.log(trail);
-      
+     
       return (
         <div>
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <Field
-              label='User'
-              name='user'
-              component={this.renderField}
-            />
-            <Field
-              label='Comment'
-              name='comment'
-              component={this.renderField}
-            />
-            <Field
-              label='Date'
-              name='date'
-              component={this.renderField}
-            />
-            <button type='submit' className='btn btn-primary'>Save</button>
-            <Link to='/homepage' className='btn btn-danger'>Cancel</Link>
-          </form>
+          <div className='form-main' >
+            <div className='form' >
+              <form className='save-form' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <h3>Save Trail</h3>
+                <Field
+                  label='User'
+                  name='user'
+                  component={this.renderField}
+                  // className='feedback-input'
+                />
+                <Field
+                  label='Comment'
+                  name='comment'
+                  component={this.renderField}
+                />
+                <Field
+                  label='Date'
+                  name='date'
+                  component={this.renderField}
+                />
+                <button
+                  type='submit' className='btn btn-primary'>Save
+                </button>
+                <Link to='/homepage' className='btn btn-danger' style={{ textDecoration: 'none' }}>Cancel</Link>
+              </form>
+            </div>
+          </div>
+
           {/* <PostsSave /> */}
           {/* <Link to='/'>Back to Index</Link> */}
           <h2>Name: {trail.name}</h2>
@@ -180,7 +192,7 @@ class PostsShow extends Component {
             <li>Status: {trail.conditionStatus} </li>
             <li>Details: {trail.conditionDetails}</li>
           </ul>
-          <img src= {trail.imgMedium}  alt={trail.name} />
+          <img className='id-img' src= {trail.imgMedium}  alt={trail.name} />
         </div>
       );
     });

@@ -1,0 +1,15 @@
+.post-item {
+  background-color: #bdc3c7;
+  padding-bottom: 1px;
+}
+
+.post-item h2 {
+  margin-bottom: -10px;
+  text-align: center;
+}
+
+.post-item h4 {
+  margin-bottom: -30px;
+  text-align: left;
+  padding-left: 90px;
+}
