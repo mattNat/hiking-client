@@ -144,7 +144,7 @@ class PostsShow extends Component {
       // console.log(trail);
      
       return (
-        <div>
+        <div key={trail.id.toString()}>
           <div className='form-main' >
             <div className='form' >
               <form className='save-form' onSubmit={handleSubmit(this.onSubmit.bind(this))}>

@@ -250,11 +250,11 @@ class PostsIndex extends Component {
       <div>
         <Sidebar />
         <div className='search-results'>
-              <h3>
-                Find your next adventure...
-              </h3>
-              <hr />
-              <SearchBar />
+            <h3>
+              Find your next adventure...
+            </h3>
+            <hr />
+            <SearchBar />
             <div className='wrapper' >
               <ul className='itemHolder' >
                 {this.renderPosts()}
