@@ -1,3 +1,47 @@
+## React Capstone project by Matt San Pedro
+Title: Find Your Next Adventure...
+
+Purpose: Find hiking trails by entering an address, location, or national park name.
+
+Link to deployed version: 
+http://gracious-bose-61bbb2.netlify.com
+
+Tech stack:
+-React-Redux
+-MongoDB
+
+# Landing Page
+![alt text](https://www.dropbox.com/s/fdcm8wbx2myqene/001-Landing.png?dl=0)
+
+An accordian styled set of images appear.
+User can hover over an image in the accordian and image will zoom in.
+The link above titled "Search for your next trail" will take user to home page.
+
+# Home Page
+![alt text](https://www.dropbox.com/s/rc6s6ahzvaa8x7g/002-homepage.png?dl=0)
+
+The nav bar appears with links to the home page and saved trails page.
+Below "Find your next adventure", you can search by address, city, or national park.
+Submit the search by clicking on icon or pressing enter and 10 trails will populate.
+Clicking on "Save Trail" button will take you to the save form.
+
+# Save Trail Page
+![alt text](https://www.dropbox.com/s/x772rrzsmf3w5tp/003-saveForm.png?dl=0)
+
+Enter in user name, comment, and date when the hike is planned.
+In addition, there are trail details that appear below.
+Click "Save" to save the inputs and trail information to the database.
+Click "Cancel" to return to the home screen.
+
+# Saved Trails Page
+![alt text](https://www.dropbox.com/s/4pzi1tdfbjac144/004-savedTrails.png?dl=0)
+
+Page is accessed through the nav bar by clicking "Saved Trails."
+On the very top is the trail name and user inputs immediately below.
+The "Delete Post" button deletes the post and refreshes the page.
+Hovering over the image shows details of the hike.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
