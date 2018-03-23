@@ -47,16 +47,16 @@ class PostsIndex extends Component {
 
     const coor = (Object.values(this.props.coordinates)[0]) || {};
     console.log(coor);
-    const coor2 = ((coor.results));    
+    // const coor2 = ((coor.results));    
     // console.log(coor2);
-    let coorProps = {};
-    for (var key in coor2) {
-      coorProps = (Object.values(coor2[0])[2].location);
-    }
-    console.log(coorProps.lat, coorProps.lng);
+    // let coorProps = {};
+    // for (var key in coor2) {
+    //   coorProps = (Object.values(coor2[0])[2].location);
+    // }
+    // console.log(coorProps.lat, coorProps.lng);
     
-    const latCoor = coorProps.lat;
-    const lonCoor = coorProps.lng;
+    // const latCoor = coorProps.lat;
+    // const lonCoor = coorProps.lng;
 
     // fetch trails for lat long coordinates
     // this.props.fetchTrails(latCoor, lonCoor);
@@ -92,7 +92,7 @@ class PostsIndex extends Component {
     
     // console.log(coor.trails.map((trail, index) => console.log(trail, index)));
     
-    const trailArr = _.values(coor.trails);
+    // const trailArr = _.values(coor.trails);
     // console.log(typeof test);
     // const testArr = test.map((trail, index) => console.log(trail, index));
 
@@ -104,8 +104,8 @@ class PostsIndex extends Component {
       
     // })
 
-    console.log(trailArr.slice(0,3).forEach((trail, index) => console.log(trail.name, index)
-    ));
+    // console.log(trailArr.slice(0,3).forEach((trail, index) => console.log(trail.name, index)
+    // ));
     
       // trailArr.slice(0,2)
       
@@ -163,29 +163,29 @@ class PostsIndex extends Component {
       }
       
       let name = null;
-      let imgLink = null;
+      // let imgLink = null;
 
       if (trail.difficulty === 'green') {
         name = 'Very Easy';
-        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';
+        // imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';
       } else if (trail.difficulty === 'greenBlue') {
         name = 'Easy';
-        imgLink = 'https://cdn.apstatic.com/img/diff/greenBlue.svg';
+        // imgLink = 'https://cdn.apstatic.com/img/diff/greenBlue.svg';
       } else if (trail.difficulty === 'blue') {
         name = 'Intermediate';
-        imgLink = 'https://cdn.apstatic.com/img/diff/blue.svg';
+        // imgLink = 'https://cdn.apstatic.com/img/diff/blue.svg';
       } else if (trail.difficulty === 'blueBlack') {
         name = 'Challenging';
-        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
+        // imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
       } else if (trail.difficulty === 'black') {
         name = 'Very Challenging';
-        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
+        // imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
       } else if (trail.difficulty === 'dblack') {
         name = 'Extremely Challenging';
-        imgLink = 'https://cdn.apstatic.com/img/diff/dblack.svg';
+        // imgLink = 'https://cdn.apstatic.com/img/diff/dblack.svg';
       } else {
         name = 'Not Provided'
-        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';        
+        // imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';        
       }
 
       return (

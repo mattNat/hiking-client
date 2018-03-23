@@ -22,43 +22,43 @@ export function Landing() {
                     {folders}
                 </ul>
             </nav>
-            <div class="accordian">
+            <div className="accordian">
 	<ul>
 		<li>
-			<div class="image_title">
-				<a href="#">Find</a>
+			<div className="image_title">
+				<a >Find</a>
 			</div>
-			<a href="#">
+			<a >
 				{/* <img src="http://thecodeplayer.com/uploads/media/3yiC6Yq.jpg"/>                 */}
                 <img src="https://adventurejunkies-theadventurejunk.netdna-ssl.com/wp-content/uploads/hiking-1.jpg" 
-                width='650' height='325' />
+                alt='Outdoor mountain one' width='650' height='325' />
 			</a>
 		</li>
 		<li>
-			<div class="image_title">
-				<a href="#">Your</a>
+			<div className="image_title">
+				<a >Your</a>
 			</div>
-			<a href="#">
+			<a >
                 <img src="https://cdn.kimkim.com/files/a/content_articles/featured_photos/7a1e35ce237d78064a73e43f31c2d36897903ef3/big-7cb3c41e0671f4e79a3f9bae97d3490d.jpg" 
-                width='650' height='325' />
+                alt='Outdoor mountain two' width='650' height='325' />
 			</a>
 		</li>
 		<li>
-			<div class="image_title">
-				<a href="#">Next</a>
+			<div className="image_title">
+				<a >Next</a>
 			</div>
-			<a href="#">
+			<a >
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Hiking_in_the_Talkeetna_Mountains_of_Alaska.JPG" 
-                width='650' height='325' />
+                alt='Outdoor mountain three' width='650' height='325' />
 			</a>
 		</li>
 		<li>
-			<div class="image_title">
-				<a href="#">Adventure...</a>
+			<div className="image_title">
+				<a >Adventure...</a>
 			</div>
-			<a href="#">
+			<a >
                 <img src="http://yegfitness.ca/wp-content/uploads/2017/07/hiking.jpg" 
-                width='650' height='325' />
+                alt='Outdoor mountain four' width='650' height='325' />
 			</a>
 		</li>
 		{/* <li>

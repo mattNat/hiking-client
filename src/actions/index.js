@@ -87,16 +87,17 @@ export function fetchCoordinates(address) {
 
   // console.log(request);
   
-  const getCoor = axios.get(url)
-    .then(coor => {
-      const latCoor = (coor.data.results[0].geometry.location.lat);
-      const lngCoor = (coor.data.results[0].geometry.location.lng);
+  // For google maps api integration
+  // const getCoor = axios.get(url)
+  //   .then(coor => {
+  //     const latCoor = (coor.data.results[0].geometry.location.lat);
+  //     const lngCoor = (coor.data.results[0].geometry.location.lng);
 
-      return coor.data.results[0].geometry.location;
-    })
+  //     return coor.data.results[0].geometry.location;
+  //   })
 
 
-  console.log(getCoor);
+  // console.log(getCoor);
   
   
   // const requestTrail = a
@@ -122,7 +123,7 @@ export function fetchCoordinates(address) {
 }
 
 export function deletePost(id, callback) {
-  const request = axios.delete(`${ROOT_URL}/notes/${id}`)
+  axios.delete(`${ROOT_URL}/notes/${id}`)
     .then( () => callback());
 
   return {

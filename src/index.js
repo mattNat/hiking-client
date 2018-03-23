@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
-import { createHashHistory } from 'history';
+// import { createHashHistory } from 'history';
 
 import './index.css';
 
@@ -43,4 +43,4 @@ ReactDOM.render(
 , document.getElementById('root'));
 registerServiceWorker();
 
-export const historyPack = createHashHistory();
+// export const historyPack = createHashHistory();

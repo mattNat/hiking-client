@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // clearly identical to anchor tag
-import { Link } from 'react-router-dom';
-import { fetchPosts, fetchPost, deletePost } from '../actions';
+import { fetchPosts, deletePost } from '../actions';
 import _ from 'lodash';
 import Sidebar from './sidebar';
 import ReactStars from 'react-stars';
-// import historyPack from '../index';
-import { createHashHistory } from 'history';
 
 import './posts_new.css';
 import './hover-animate.css';
@@ -20,10 +17,6 @@ class PostsIndex extends Component {
   componentDidMount() {
     // action creator, will console.log twice
     this.props.fetchPosts();
-
-    const { id } = this.props.match.params;
-    this.props.fetchPost(id);
-    console.log('componentDidMount id:', id);
     
   }
 
@@ -63,29 +56,21 @@ class PostsIndex extends Component {
       }
 
       let name = null;
-      let imgLink = null;      
 
       if (post.difficulty === 'green') {
         name = 'Very Easy';
-        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';
       } else if (post.difficulty === 'greenBlue') {
         name = 'Easy';
-        imgLink = 'https://cdn.apstatic.com/img/diff/greenBlue.svg';
       } else if (post.difficulty === 'blue') {
         name = 'Intermediate';
-        imgLink = 'https://cdn.apstatic.com/img/diff/blue.svg';
       } else if (post.difficulty === 'blueBlack') {
         name = 'Challenging';
-        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
       } else if (post.difficulty === 'black') {
         name = 'Very Challenging';
-        imgLink = 'https://cdn.apstatic.com/img/diff/blueBlack.svg';
       } else if (post.difficulty === 'dblack') {
         name = 'Extremely Challenging';
-        imgLink = 'https://cdn.apstatic.com/img/diff/dblack.svg';
       } else {
         name = 'Not Provided'
-        imgLink = 'https://cdn.apstatic.com/img/diff/green.svg';        
       }
 
       return (
@@ -185,6 +170,4 @@ function mapStateToProps({ posts }, ownProps) {
 // null - we are not passing mapsStateToProps
 // fetchPosts is identical to mapDispatchToProps
 // still have access to this.props.fetch.posts
-export default connect(mapStateToProps, { fetchPosts, fetchPost, deletePost })(PostsIndex);
-
-export const historyPack = createHashHistory();
+export default connect(mapStateToProps, { fetchPosts, deletePost })(PostsIndex);
