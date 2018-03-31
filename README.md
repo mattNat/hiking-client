@@ -8,9 +8,10 @@ Link to deployed version:
 http://gracious-bose-61bbb2.netlify.com
 
 Tech stack:
--React
+-ReactJS
 -Redux
 -MongoDB
+-Express.js
 -Node.js
 
 # Landing Page
@@ -43,6 +44,9 @@ Page is accessed through the nav bar by clicking "Saved Trails."
 On the very top is the trail name and user inputs immediately below.
 The "Delete Post" button deletes the post and refreshes the page.
 Hovering over the image shows details of the hike.
+
+# For Developers
+Run "npm install" in both hiking-client and nestle-server directories.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
