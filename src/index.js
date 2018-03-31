@@ -44,3 +44,4 @@ ReactDOM.render(
 registerServiceWorker();
 
 // export const historyPack = createHashHistory();
+// export default Index;

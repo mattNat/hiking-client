@@ -16,7 +16,7 @@ export function Landing() {
     );
 
     return (
-        <div className="sidebar sidebar-left">
+        <div className="sidebar sidebar-left landing-all">
             <nav className="landing-menu">
                 <ul className="landing-menu-list">
                     {folders}

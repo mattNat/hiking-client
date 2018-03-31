@@ -6,7 +6,7 @@ export default function(state={}, action) {
   case FETCH_POSTS:
     // console.log('BEFORE', action.payload.data); // [ post1, post2 ]
     // { 4: post }
-    // console.log('AFTER', _.mapKeys(action.payload.data, 'id')); // [ post1, post2 ]
+    console.log('AFTER', _.mapKeys(action.payload.data, 'id')); // [ post1, post2 ]
     
     // need it here only
     // come back later and understand

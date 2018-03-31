@@ -94,7 +94,7 @@ class PostsIndex extends Component {
         </h1> */}
           <h2>{post.name}</h2>
           <h4>
-            User: {post.user} <br/>
+            Group/Individual Name(s): {post.user} <br/>
             Comment: {post.comment} <br/>
             Hike Date: {post.date} <br/><br/>
             <button

@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom';
 import { fetchTrail, createPost } from '../actions';
 import _ from 'lodash';
 
+import RenderDatePicker from './date_picker';
+// import Calendar from 'react-input-calendar';
+// import DatePicker from 'react-datepicker';
+// import moment from 'moment';
+
 import './posts_show.css'
 
 
@@ -91,6 +96,15 @@ class PostsShow extends Component {
     });
   };
 
+  // renderDatePicker({input, placeholder, defaultValue, meta: {touched, error} }) {
+  //   return (
+  //   <div>
+  //         <DatePicker {...input} dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} />
+  //         {touched && error && <span>{error}</span>}
+  //   </div>
+  //   );
+  // }
+
   render() {
     const { handleSubmit } = this.props;
     console.log(this.props);
@@ -148,9 +162,9 @@ class PostsShow extends Component {
           <div className='form-main' >
             <div className='form' >
               <form className='save-form' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <h3>Save Trail</h3>
+                <h3>Register Hiking Trail</h3>
                 <Field
-                  label='User'
+                  label='Group/Individual Name(s)'
                   name='user'
                   component={this.renderField}
                   // className='feedback-input'
@@ -160,11 +174,18 @@ class PostsShow extends Component {
                   name='comment'
                   component={this.renderField}
                 />
+                <div className='set-date'>Date</div>
                 <Field
+                  component={RenderDatePicker}
                   label='Date'
                   name='date'
-                  component={this.renderField}
+                  dateFormat="DD.MM.YYYY" 
+                  showYearDropdown="{true}"
                 />
+                {/* {this.RenderDatePicker} */}
+                {/* <DatePicker {...input} dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} /> */}
+                {/* {touched && error && <span>{error}</span>} */}
+                {/* <Calendar format='DD/MM/YYYY' /> */}
                 <button
                   type='submit' className='btn btn-primary'>Save
                 </button>
