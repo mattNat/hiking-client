@@ -1,32 +1,35 @@
 ## React Capstone project by Matt San Pedro
 Title: Find Your Next Adventure...
 
-Purpose: Find hiking trails by entering an address, location, or national park name.
+Purpose: Find hiking trails by entering an address, location, or national park name.  
+  Register a hiking trail with group/individual name(s) for future reference.
 
 Link to deployed version: 
 http://gracious-bose-61bbb2.netlify.com
 
 Tech stack:
--React-Redux
+-React
+-Redux
 -MongoDB
+-Node.js
 
 # Landing Page
-![alt text](https://www.dropbox.com/s/fdcm8wbx2myqene/001-Landing.png?dl=0)
+![Landing Page](https://raw.githubusercontent.com/mattNat/hiking-client/master/images/001-landing.png)
 
 An accordian styled set of images appear.
 User can hover over an image in the accordian and image will zoom in.
 The link above titled "Search for your next trail" will take user to home page.
 
 # Home Page
-![alt text](https://www.dropbox.com/s/rc6s6ahzvaa8x7g/002-homepage.png?dl=0)
+![Home Page](https://raw.githubusercontent.com/mattNat/hiking-client/master/images/002-homepage.png)
 
 The nav bar appears with links to the home page and saved trails page.
 Below "Find your next adventure", you can search by address, city, or national park.
 Submit the search by clicking on icon or pressing enter and 10 trails will populate.
 Clicking on "Save Trail" button will take you to the save form.
 
-# Save Trail Page
-![alt text](https://www.dropbox.com/s/x772rrzsmf3w5tp/003-saveForm.png?dl=0)
+# Register Trail Page
+![Registration Form](https://raw.githubusercontent.com/mattNat/hiking-client/master/images/003-saveForm.png)
 
 Enter in user name, comment, and date when the hike is planned.
 In addition, there are trail details that appear below.
@@ -34,7 +37,7 @@ Click "Save" to save the inputs and trail information to the database.
 Click "Cancel" to return to the home screen.
 
 # Saved Trails Page
-![alt text](https://www.dropbox.com/s/4pzi1tdfbjac144/004-savedTrails.png?dl=0)
+![Saved Trails](https://raw.githubusercontent.com/mattNat/hiking-client/master/images/004-savedTrails.png)
 
 Page is accessed through the nav bar by clicking "Saved Trails."
 On the very top is the trail name and user inputs immediately below.

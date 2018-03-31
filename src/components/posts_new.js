@@ -21,17 +21,7 @@ class PostsIndex extends Component {
   }
 
   onDeleteClick(id) {
-    // const {id} = this.props.posts;
-
-    // console.log('on delete PARAMS:', this.props.match.params);
-    
-    // console.log('on delete ID:', id);
-
-
     this.props.deletePost(id, () => {
-      // this.props.history.push('/posts/new');
-      // this.context.history.push('/posts/new');
-      // historyPack.push('/posts/new')
       window.location.reload();
     });
   }
@@ -74,24 +64,7 @@ class PostsIndex extends Component {
       }
 
       return (
-        // // OLD
-        // <li className='list-group-item' key={post.id.toString()} >
-        //   <img className='post-img' src= {post.imgSmallMed}  alt={post.name} />
-        //   User: {post.user} <br/>
-        //   Comment: {post.comment} <br/>
-        //   Hike Date: {post.date} <br/><br/>
-        //   Name: {post.name} <br/>
-        //   Length (round-trip): {post.length} mi<br/>
-        //   Condition: {post.conditionStatus} <br/>
-        //   Stars: {post.stars} out of {post.starVotes} votes <br/>
-        //   <a href={post.url}>Trail coordinates</a> <br/>
-        // </li>
-
-        // NEW
         <div className='post-item' key={post.id.toString()}>
-        {/* add text align center to h below */}
-        {/* <h1 className="hover"> hover the image
-        </h1> */}
           <h2>{post.name}</h2>
           <h4>
             Group/Individual Name(s): {post.user} <br/>
@@ -104,7 +77,7 @@ class PostsIndex extends Component {
               //   this.props.history.push('/posts/new');
               onClick={() => this.onDeleteClick(post.id)}
             >
-              Delete Post
+            Delete Post
             </button>
           </h4>
           <div className="container">
